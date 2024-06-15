@@ -144,9 +144,13 @@ def custom_metrics(data):
     pos = data[data['Diferencia'] > 0].shape[0]
     neg = data[data['Diferencia'] < 0].shape[0]
 
-    media_pos = data[data['Diferencia'] > 0]['Diferencia'].mean().round(3)
-    max_pos = data[data['Diferencia'] > 0]['Diferencia'].max().round(3)
-    min_pos = data[data['Diferencia'] > 0]['Diferencia'].min().round(3)
+    if data[data['Diferencia'] > 0].shape[0] == 0:
+        media_pos, min_pos, max_pos = 0, 0, 0
+
+    else:
+        media_pos = data[data['Diferencia'] > 0]['Diferencia'].mean().round(3)
+        max_pos = data[data['Diferencia'] > 0]['Diferencia'].max().round(3)
+        min_pos = data[data['Diferencia'] > 0]['Diferencia'].min().round(3)
     
     if data[data['Diferencia'] < 0].shape[0] == 0:
         media_neg, min_neg, max_neg = 0, 0, 0
