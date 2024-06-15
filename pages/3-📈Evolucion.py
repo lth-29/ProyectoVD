@@ -31,8 +31,6 @@ if comparar == "Dominio concreto":
     dominio = st.sidebar.selectbox("Dominio", variables)
     visualizaciones = ["Proporción", "Gráfico de barras", "Mapa", "Cartograma"]
     data = data[data["Dominio"] == dominio]
-    # data.rename(columns={"Diferencia": dominio}, inplace=True)
-    print(data)
 else:
     visualizaciones = ["Mapa", "Cartograma"]
     dominio = variables

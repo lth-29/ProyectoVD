@@ -514,8 +514,6 @@ def custom_cartogram(data, variables, dominio, escala, paleta="BuPu", auxiliar=N
         years, _ = get_years()
         cols = st.columns(3)
 
-        print(data)
-
         if dominio == "Diferencia":
             values = data["Dominio"].unique()
             t = 'Dominio'
