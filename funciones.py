@@ -272,7 +272,7 @@ def show_graphs(data, variables, type="", d = None, escala=False, pagina = None)
         neg = data[data['Diferencia'] < 0].shape[0]
 
         if pos == 0 and neg == 0:
-            st.write(f"La diferencia es 0 en todos los países entre {data["Index Year"].values[0]}. No se puede realizar la comparación.")
+            st.write(f"La diferencia es 0 en todos los países entre {data["Index Year"].values[0]} para el dominio {d}. No se puede realizar la comparación.")
             return
 
         else:
