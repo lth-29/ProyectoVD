@@ -176,6 +176,16 @@ def show_graphs(data, variables, type="", d = None, escala=False, pagina = None)
     # Create the graphs
     fig = go.Figure()
 
+    if "Diferencia" in variables:
+        data = data[data["Country"] != 'Europe']
+        pos = data[data['Diferencia'] > 0].shape[0]
+        neg = data[data['Diferencia'] < 0].shape[0]
+
+        if pos == 0 and neg == 0:
+            st.warning(f"La diferencia es 0 en todos los países entre {data["Index Year"].values[0]} para el dominio {d}. No se puede realizar la comparación.")
+            return
+
+
     if type == "Lineas":
 
         df = data.melt(id_vars=['Country', 'code', 'Index Year'], var_name='Variable', value_name='Value')
@@ -271,28 +281,24 @@ def show_graphs(data, variables, type="", d = None, escala=False, pagina = None)
         pos = data[data['Diferencia'] > 0].shape[0]
         neg = data[data['Diferencia'] < 0].shape[0]
 
-        if pos == 0 and neg == 0:
-            st.write(f"La diferencia es 0 en todos los países entre {data["Index Year"].values[0]} para el dominio {d}. No se puede realizar la comparación.")
-            return
-
-        else:
-            # Pie chart
-            fig = px.pie(values=[pos, neg], names=['mejora', 'empeoramiento'],
-                        title=f'Proporción de países con mejora y empeoramiento <br>en el dominio {d}',
-                        height=500, width=500,
-                        color_discrete_sequence=['green', 'red'])
-            fig.update_traces(
-                hovertemplate='Países con %{label}: %{value} <br>%{percent:.2%}<extra></extra>',
-                labels=['Mejora', 'Empeoramiento']
-            )
-            
-            cols = st.columns(2)
-            with cols[0]:
-                st.plotly_chart(fig)
-            with cols[1]:
-                st.write(f"")
-                st.write(f"")
-                custom_metrics(data)
+        
+        # Pie chart
+        fig = px.pie(values=[pos, neg], names=['mejora', 'empeoramiento'],
+                    title=f'Proporción de países con mejora y empeoramiento <br>en el dominio {d}',
+                    height=500, width=500,
+                    color_discrete_sequence=['green', 'red'])
+        fig.update_traces(
+            hovertemplate='Países con %{label}: %{value} <br>%{percent:.2%}<extra></extra>',
+            labels=['Mejora', 'Empeoramiento']
+        )
+        
+        cols = st.columns(2)
+        with cols[0]:
+            st.plotly_chart(fig)
+        with cols[1]:
+            st.write(f"")
+            st.write(f"")
+            custom_metrics(data)
 
     elif type == "Boxplot":
 
