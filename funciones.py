@@ -217,7 +217,7 @@ def show_graphs(data, variables, type="", d = None, escala=False, pagina = None)
             )
         fig.update_layout(
             title=f'Evolución del dominio {d}',
-            xaxis_title=f'Diferencia {data['Index Year'].values[0]}',
+            xaxis_title=f"Diferencia {data['Index Year'].values[0]}",
             yaxis_title='País',
             grid=dict(columns=1, rows=1)
         )
