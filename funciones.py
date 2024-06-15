@@ -176,13 +176,10 @@ def show_graphs(data, variables, type="", d = None, escala=False, pagina = None)
     # Create the graphs
     fig = go.Figure()
 
-    print(variables)
-    if "Diferencia" in variables:
+    if "Diferencia" in data.columns:
         data = data[data["Country"] != 'Europe']
-        pos = data[data['Diferencia'] > 0].shape[0]
-        neg = data[data['Diferencia'] < 0].shape[0]
 
-        if pos == 0 and neg == 0:
+        if data["Diferencia"].sum() == 0:
             st.warning(f"La diferencia es 0 en todos los países entre {data["Index Year"].values[0]} para el dominio {d}. No se puede realizar la comparación.")
             return
 
