@@ -176,6 +176,7 @@ def show_graphs(data, variables, type="", d = None, escala=False, pagina = None)
     # Create the graphs
     fig = go.Figure()
 
+    print(variables)
     if "Diferencia" in variables:
         data = data[data["Country"] != 'Europe']
         pos = data[data['Diferencia'] > 0].shape[0]
