@@ -27,7 +27,7 @@ st.markdown('''
             
     Esta web ha sido creada para analizar los datos del índice de igualdad de género de la UE como proyecto final de la asignatura de Visualización de Datos del Máster Universitario en Inteligencia Artificial, Reconocimiento de Formas e Imagen Digital (MUIARFID) de la Universitat Politècnica de València durante el curso 2023-2024.
             
-    Para acceder al vídeo de presentación de la web, haz clic [aquí](https://eige.europa.eu/gender-equality-index/2022/EU).
+    Para acceder al vídeo de presentación de la web, haz clic [aquí](https://media.upv.es/player/?id=8fce02e0-2bb6-11ef-b5d5-b350270db618).
                 
     '''
 )
